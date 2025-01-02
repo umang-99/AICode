@@ -27,4 +27,4 @@ RUN dotnet publish "./AICode.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AICode.dll"]
+ENTRYPOINT ["sh", "-c", "sleep 10 && dotnet AICode.dll"]
