@@ -18,3 +18,8 @@ services:
       - ./.containers/products-db:/var/lib/postgresql/data
     ports:
       - 5433:5432
+  products.cache:
+    image: redis:latest
+    restart: always
+    ports:
+      - '6379:6379'
