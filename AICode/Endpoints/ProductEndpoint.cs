@@ -99,7 +99,7 @@ public static class ProductEndpoints
 
             // Pagination
             var expenses = await query
-                .Select(expense => new ListAllExpenseResponseDto
+                .Select(expense => new ExpenseModel
                 {
                     Id = expense.Id,
                     Name = expense.Name,
@@ -126,6 +126,18 @@ public static class ProductEndpoints
                 async token =>
                 {
                     var product = await context.Expenses
+                        .Select(expense => new ExpenseModel
+                        {
+                            Id = expense.Id,
+                            Name = expense.Name,
+                            Amount = expense.Amount,
+                            CategoryId = expense.CategoryId,
+                            CategoryName = expense.Category.Name,
+                            Date = expense.Date,
+                            Description = expense.Description,
+                            CreatedAt = expense.CreatedAt,
+                            UpdatedAt = expense.UpdatedAt
+                        })
                         .AsNoTracking()
                         .FirstOrDefaultAsync(p => p.Id == id, token);
 
