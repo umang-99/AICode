@@ -27,7 +27,12 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+	app.UseCors(builder => builder
+			.AllowCredentials()
+			.AllowAnyOrigin()
+			.AllowAnyHeader()
+			.AllowAnyMethod());
+	app.UseSwagger();
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
