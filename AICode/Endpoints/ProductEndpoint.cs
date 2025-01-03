@@ -12,7 +12,7 @@ public static class ProductEndpoints
 {
     public static void MapProductEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapPost("products", async (
+        app.MapPost("expenses", async (
             CreateExpenseRequest request,
             IValidator<CreateExpenseRequest> validator,
             ApplicationDbContext context,
@@ -32,7 +32,7 @@ public static class ProductEndpoints
             return Results.Ok(expense);
         });
 
-        app.MapPut("products/{id}", async (
+        app.MapPut("expenses/{id}", async (
             int id,
             UpdateExpenseRequest request,
             IValidator<UpdateExpenseRequest> validator,
@@ -65,7 +65,7 @@ public static class ProductEndpoints
             return Results.NoContent();
         });
         
-        app.MapGet("products", async (
+        app.MapGet("expenses", async (
             ApplicationDbContext context,
             CancellationToken ct,
             int page = 1,
@@ -80,7 +80,7 @@ public static class ProductEndpoints
             return Results.Ok(products);
         });
 
-        app.MapGet("products/{id}", async (
+        app.MapGet("expenses/{id}", async (
             int id,
             ApplicationDbContext context,
             IDistributedCache cache,
@@ -102,7 +102,7 @@ public static class ProductEndpoints
         });
         
 
-        /*app.MapDelete("products/{id}", async (
+        /*app.MapDelete("expenses/{id}", async (
             int id,
             ApplicationDbContext context,
             IDistributedCache cache,
