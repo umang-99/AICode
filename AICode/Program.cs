@@ -1,10 +1,12 @@
 using AICode.Database;
+using AICode.Domain.Expense;
 using AICode.Endpoints;
 using AICode.Entities;
 using AICode.Extensions;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,15 +26,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("Cache"));
 
+// Register FluentValidation services
+builder.Services.AddValidatorsFromAssemblyContaining<CreateExpenseRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateExpenseRequestValidator>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-	app.UseCors(builder => builder
-			.AllowAnyOrigin()
-			.AllowAnyHeader()
-			.AllowAnyMethod());
-	app.UseSwagger();
+    app.UseCors(builder => builder
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+    app.UseSwagger();
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }

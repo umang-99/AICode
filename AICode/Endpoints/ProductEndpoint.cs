@@ -2,6 +2,7 @@
 using AICode.Database;
 using AICode.Entities;
 using AICode.Extensions;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 
@@ -13,9 +14,16 @@ public static class ProductEndpoints
     {
         app.MapPost("products", async (
             CreateExpenseRequest request,
+            IValidator<CreateExpenseRequest> validator,
             ApplicationDbContext context,
             CancellationToken ct) =>
         {
+            var validationResult = await validator.ValidateAsync(request, ct);
+            if (!validationResult.IsValid)
+            {
+                return Results.BadRequest(validationResult.Errors);
+            }
+
             var expense = request.ToExpense();
             context.Add(expense);
 
@@ -24,6 +32,39 @@ public static class ProductEndpoints
             return Results.Ok(expense);
         });
 
+        app.MapPut("products/{id}", async (
+            int id,
+            UpdateExpenseRequest request,
+            IValidator<UpdateExpenseRequest> validator,
+            ApplicationDbContext context,
+            IDistributedCache cache,
+            CancellationToken ct) =>
+        {
+            var validationResult = await validator.ValidateAsync(request, ct);
+            if (!validationResult.IsValid)
+            {
+                return Results.BadRequest(validationResult.Errors);
+            }
+
+            var product = await context.Expenses.FirstOrDefaultAsync(p => p.Id == id, ct);
+            if (product is null)
+            {
+                return Results.NotFound();
+            }
+
+            // Update product properties here
+            product.Name = request.Name;
+            product.Amount = request.Amount;
+            product.CategoryId = request.CategoryId;
+            product.Date = request.Date;
+            product.Description = request.Description;
+
+            await context.SaveChangesAsync(ct);
+            await cache.RemoveAsync($"products-{id}", ct);
+
+            return Results.NoContent();
+        });
+        
         app.MapGet("products", async (
             ApplicationDbContext context,
             CancellationToken ct,
@@ -59,30 +100,7 @@ public static class ProductEndpoints
 
             return product is null ? Results.NotFound() : Results.Ok(product);
         });
-
-        app.MapPut("products/{id}", async (
-            int id,
-            UpdateExpenseRequest request,
-            ApplicationDbContext context,
-            IDistributedCache cache,
-            CancellationToken ct) =>
-        {
-            var product = await context.Expenses
-                .FirstOrDefaultAsync(p => p.Id == id, ct);
-
-            if (product is null)
-            {
-                return Results.NotFound();
-            }
-
-            
-
-            await context.SaveChangesAsync(ct);
-
-            await cache.RemoveAsync($"products-{id}", ct);
-
-            return Results.NoContent();
-        });
+        
 
         /*app.MapDelete("products/{id}", async (
             int id,
