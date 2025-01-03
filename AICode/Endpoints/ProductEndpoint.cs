@@ -2,6 +2,7 @@
 using AICode.Database;
 using AICode.Entities;
 using AICode.Extensions;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 
@@ -13,9 +14,16 @@ public static class ProductEndpoints
     {
         app.MapPost("products", async (
             CreateExpenseRequest request,
+            IValidator<CreateExpenseRequest> validator,
             ApplicationDbContext context,
             CancellationToken ct) =>
         {
+            var validationResult = await validator.ValidateAsync(request, ct);
+            if (!validationResult.IsValid)
+            {
+                return Results.BadRequest(validationResult.Errors);
+            }
+
             var expense = request.ToExpense();
             context.Add(expense);
 
