@@ -46,49 +46,49 @@ namespace AICode.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9913),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3311),
                             Name = "Food"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9915),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3312),
                             Name = "Housing"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9916),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3314),
                             Name = "Transportation"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9917),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3315),
                             Name = "Utilities"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9918),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3316),
                             Name = "Healthcare"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9919),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3316),
                             Name = "Entertainment"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9920),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3317),
                             Name = "Education"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9921),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 30, 39, 132, DateTimeKind.Utc).AddTicks(3318),
                             Name = "Other"
                         });
                 });
