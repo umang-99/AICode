@@ -28,6 +28,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 // Register FluentValidation services
 builder.Services.AddValidatorsFromAssemblyContaining<CreateExpenseRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateExpenseRequestValidator>();
 
 var app = builder.Build();
 
