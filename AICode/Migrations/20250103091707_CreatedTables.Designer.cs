@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AICode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250103090307_CreatedTables")]
+    [Migration("20250103091707_CreatedTables")]
     partial class CreatedTables
     {
         /// <inheritdoc />
@@ -49,49 +49,49 @@ namespace AICode.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7341),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6420),
                             Name = "Food"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7343),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6422),
                             Name = "Housing"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7344),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6423),
                             Name = "Transportation"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7345),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6424),
                             Name = "Utilities"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7346),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6425),
                             Name = "Healthcare"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7347),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6426),
                             Name = "Entertainment"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7347),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6427),
                             Name = "Education"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7348),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6428),
                             Name = "Other"
                         });
                 });

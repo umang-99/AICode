@@ -214,14 +214,14 @@ namespace AICode.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7341), "Food" },
-                    { 2, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7343), "Housing" },
-                    { 3, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7344), "Transportation" },
-                    { 4, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7345), "Utilities" },
-                    { 5, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7346), "Healthcare" },
-                    { 6, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7347), "Entertainment" },
-                    { 7, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7347), "Education" },
-                    { 8, new DateTime(2025, 1, 3, 9, 3, 7, 335, DateTimeKind.Utc).AddTicks(7348), "Other" }
+                    { 1, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6420), "Food" },
+                    { 2, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6422), "Housing" },
+                    { 3, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6423), "Transportation" },
+                    { 4, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6424), "Utilities" },
+                    { 5, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6425), "Healthcare" },
+                    { 6, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6426), "Entertainment" },
+                    { 7, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6427), "Education" },
+                    { 8, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6428), "Other" }
                 });
 
             migrationBuilder.CreateIndex(

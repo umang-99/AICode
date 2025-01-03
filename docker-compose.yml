@@ -7,11 +7,11 @@ services:
     ports:
         - "5000:5000"
         - "5001:5001"
-  products.database:
+  expense.database:
     image: postgres:latest
-    container_name: products.database
+    container_name: expense.database
     environment:
-      - POSTGRES_DB=products
+      - POSTGRES_DB=expense
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
