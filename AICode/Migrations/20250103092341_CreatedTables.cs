@@ -189,18 +189,11 @@ namespace AICode.Migrations
                     Description = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
-                    UserId1 = table.Column<string>(type: "text", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Expenses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Expenses_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Expenses_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -214,14 +207,14 @@ namespace AICode.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6420), "Food" },
-                    { 2, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6422), "Housing" },
-                    { 3, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6423), "Transportation" },
-                    { 4, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6424), "Utilities" },
-                    { 5, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6425), "Healthcare" },
-                    { 6, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6426), "Entertainment" },
-                    { 7, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6427), "Education" },
-                    { 8, new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6428), "Other" }
+                    { 1, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9913), "Food" },
+                    { 2, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9915), "Housing" },
+                    { 3, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9916), "Transportation" },
+                    { 4, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9917), "Utilities" },
+                    { 5, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9918), "Healthcare" },
+                    { 6, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9919), "Entertainment" },
+                    { 7, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9920), "Education" },
+                    { 8, new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9921), "Other" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -265,11 +258,6 @@ namespace AICode.Migrations
                 name: "IX_Expenses_CategoryId",
                 table: "Expenses",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Expenses_UserId1",
-                table: "Expenses",
-                column: "UserId1");
         }
 
         /// <inheritdoc />

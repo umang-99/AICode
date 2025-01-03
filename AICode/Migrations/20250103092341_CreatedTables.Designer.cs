@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AICode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250103091707_CreatedTables")]
+    [Migration("20250103092341_CreatedTables")]
     partial class CreatedTables
     {
         /// <inheritdoc />
@@ -49,49 +49,49 @@ namespace AICode.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6420),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9913),
                             Name = "Food"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6422),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9915),
                             Name = "Housing"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6423),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9916),
                             Name = "Transportation"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6424),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9917),
                             Name = "Utilities"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6425),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9918),
                             Name = "Healthcare"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6426),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9919),
                             Name = "Entertainment"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6427),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9920),
                             Name = "Education"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 1, 3, 9, 17, 7, 509, DateTimeKind.Utc).AddTicks(6428),
+                            CreatedAt = new DateTime(2025, 1, 3, 9, 23, 41, 176, DateTimeKind.Utc).AddTicks(9921),
                             Name = "Other"
                         });
                 });
@@ -134,15 +134,9 @@ namespace AICode.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("UserId1")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Expenses");
                 });
@@ -371,15 +365,7 @@ namespace AICode.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AICode.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

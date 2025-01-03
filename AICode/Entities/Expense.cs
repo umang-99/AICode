@@ -29,8 +29,6 @@ namespace AICode.Entities
 
 		public bool IsDeleted { get; set; }
 
-		// Navigation properties
-		public User User { get; set; } // Navigation property for User
 		public Category Category { get; set; } // Navigation property for Category
 	}
 }
