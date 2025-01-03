@@ -64,20 +64,49 @@ public static class ProductEndpoints
 
             return Results.NoContent();
         });
-        
+
         app.MapGet("expenses", async (
             ApplicationDbContext context,
             CancellationToken ct,
+            DateTime? startDate = null,
+            DateTime? endDate = null,
             int page = 1,
             int pageSize = 10) =>
         {
-            var products = await context.Expenses
-                .AsNoTracking()
+            var query = context.Expenses.AsNoTracking();
+
+            query = query.Where(expense => !expense.IsDeleted);
+
+            // Apply date range filter if startDate and endDate are provided
+            if (startDate.HasValue)
+            {
+                query = query.Where(expense => expense.Date >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                query = query.Where(expense => expense.Date <= endDate.Value);
+            }
+
+            // Pagination
+            var expenses = await query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
+                .Select(expense => new ListAllExpenseResponseDto
+                {
+                    Id = expense.Id,
+                    Name = expense.Name,
+                    Amount = expense.Amount,
+                    CategoryId = expense.CategoryId,
+                    CategoryName = expense.Category.Name,
+                    Date = expense.Date,
+                    Description = expense.Description,
+                    CreatedAt = expense.CreatedAt,
+                    UpdatedAt = expense.UpdatedAt
+                })
                 .ToListAsync(ct);
 
-            return Results.Ok(products);
+            return Results.Ok(expenses);
         });
 
         app.MapGet("expenses/{id}", async (
