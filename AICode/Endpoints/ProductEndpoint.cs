@@ -1,6 +1,7 @@
 ﻿using AICode.Contracts;
 using AICode.Database;
 using AICode.Entities;
+using AICode.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 
@@ -11,21 +12,16 @@ public static class ProductEndpoints
     public static void MapProductEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapPost("products", async (
-            CreateProductRequest request,
+            CreateExpenseRequest request,
             ApplicationDbContext context,
             CancellationToken ct) =>
         {
-            var product = new Product
-            {
-                Name = request.Name,
-                Price = request.Price
-            };
-
-            context.Add(product);
+            var expense = request.ToExpense();
+            context.Add(expense);
 
             await context.SaveChangesAsync(ct);
 
-            return Results.Ok(product);
+            return Results.Ok(expense);
         });
 
         app.MapGet("products", async (
@@ -34,7 +30,7 @@ public static class ProductEndpoints
             int page = 1,
             int pageSize = 10) =>
         {
-            var products = await context.Products
+            var products = await context.Expenses
                 .AsNoTracking()
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
@@ -52,7 +48,7 @@ public static class ProductEndpoints
             var product = await cache.GetAsync($"products-{id}",
                 async token =>
                 {
-                    var product = await context.Products
+                    var product = await context.Expenses
                         .AsNoTracking()
                         .FirstOrDefaultAsync(p => p.Id == id, token);
 
@@ -66,12 +62,12 @@ public static class ProductEndpoints
 
         app.MapPut("products/{id}", async (
             int id,
-            UpdateProductRequest request,
+            UpdateExpenseRequest request,
             ApplicationDbContext context,
             IDistributedCache cache,
             CancellationToken ct) =>
         {
-            var product = await context.Products
+            var product = await context.Expenses
                 .FirstOrDefaultAsync(p => p.Id == id, ct);
 
             if (product is null)
@@ -79,8 +75,7 @@ public static class ProductEndpoints
                 return Results.NotFound();
             }
 
-            product.Name = request.Name;
-            product.Price = request.Price;
+            
 
             await context.SaveChangesAsync(ct);
 
@@ -89,7 +84,7 @@ public static class ProductEndpoints
             return Results.NoContent();
         });
 
-        app.MapDelete("products/{id}", async (
+        /*app.MapDelete("products/{id}", async (
             int id,
             ApplicationDbContext context,
             IDistributedCache cache,
@@ -110,6 +105,6 @@ public static class ProductEndpoints
             await cache.RemoveAsync($"products-{id}", ct);
 
             return Results.NoContent();
-        });
+        });*/
     }
 }

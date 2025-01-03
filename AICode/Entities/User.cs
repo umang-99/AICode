@@ -4,5 +4,5 @@ namespace AICode.Entities;
 
 public class User : IdentityUser
 {
-    public string? Initials { get; set; }
+    public string? FullName { get; set; }
 }
